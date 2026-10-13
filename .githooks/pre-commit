@@ -1,0 +1,9 @@
+#!/bin/sh
+# Learning steps happen on their own branches, so main only changes through
+# merged pull requests. Refuses a commit made directly on main.
+branch=$(git symbolic-ref --quiet --short HEAD || true)
+if [ "$branch" = "main" ]; then
+    echo "error: do not commit on main. Start a learning branch first, for example:" >&2
+    echo "    git switch -c learn/m0.1-colours" >&2
+    exit 1
+fi

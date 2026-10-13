@@ -1,0 +1,10 @@
+#!/bin/sh
+# Refuses a push to main. Push the learning branch instead and merge it on
+# GitHub with a pull request.
+while read -r local_ref local_sha remote_ref remote_sha; do
+    if [ "$remote_ref" = "refs/heads/main" ]; then
+        echo "error: do not push to main. Push your learning branch and open a pull request:" >&2
+        echo "    git push -u origin HEAD" >&2
+        exit 1
+    fi
+done
