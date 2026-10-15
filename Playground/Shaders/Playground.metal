@@ -26,6 +26,7 @@ vertex VertexOut fullscreen_vertex(uint vid [[vertex_id]]) {
 
 fragment float4 playground_fragment(VertexOut in [[stage_in]],
                                     constant Uniforms &u [[buffer(0)]]) {
-    float3 color = 0.5 + 0.5 * cos(u.time + in.uv.xyx + float3(0, 2, 4));
+    // float3 color = 0.5 + 0.5 * cos(u.time + in.uv.xyx + float3(0, 2, 4));
+    float3 color = float3(1.0 - in.uv.x, 0.0, 0.0);
     return float4(color, 1.0);
 }
